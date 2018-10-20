@@ -10,17 +10,18 @@ ENV FORWARD     127.0.0.1:8388
 ENV FAILOVER    www.baidu.com:443
 
 RUN set -ex && \
+    apk add --no-cache libev && \
     apk add --no-cache --virtual .build-deps \
-                                autoconf \
-                                automake \
-                                build-base \
-                                curl \
-                                libev-dev \
-                                libtool \
-                                linux-headers \
-                                openssl-dev \
-                                pcre-dev \
-                                tar && \
+      autoconf \
+      automake \
+      build-base \
+      curl \
+      libev-dev \
+      libtool \
+      linux-headers \
+      openssl-dev \
+      pcre-dev \
+      tar && \
     mkdir -p /tmp/simple-obfs && \
     cd /tmp/simple-obfs && \
     curl -sSL https://github.com/shadowsocks/simple-obfs/archive/$VERSION.tar.gz | tar xz --strip 1 && \
